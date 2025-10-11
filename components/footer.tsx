@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -61,7 +60,7 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#1a4d3e] mt-0.5 flex-shrink-0" />
                 <p className="text-sm sm:text-base text-gray-700">
-                  Kalyanji, Block - A2, Nadia, WB- 741235
+                  Kalyanji, Block - A2, Nadia, WB - 741235
                 </p>
               </div>
             </div>
@@ -109,15 +108,20 @@ const Footer = () => {
                 {/* WhatsApp */}
                 <li className="flex items-center gap-3 group">
                   <div className="p-2 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
-                    <FaWhatsapp className="w-4 h-4 text-[#25D366]" />
+                    <Image
+                      src="/icons/whatsapp.png"
+                      alt="WhatsApp"
+                      width={18}
+                      height={18}
+                    />
                   </div>
                   <a
-                    href="https://wa.me/919477368571"
+                    href="https://wa.me/9477368571"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm sm:text-base text-gray-700 hover:text-[#1a4d3e] transition-colors duration-200"
                   >
-                    Chat on WhatsApp
+                    Chat on WhatsApp 9477368571
                   </a>
                 </li>
 

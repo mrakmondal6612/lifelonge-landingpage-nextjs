@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -64,6 +65,26 @@ const Contact = () => {
                     <span className="text-gray-900 font-medium text-base sm:text-lg">7427929684</span>
                   </div>
                 </div> */}
+
+                 {/* WhatsApp */}
+                <li className="flex items-center gap-3 group">
+                  <div className="p-2 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
+                    <Image
+                      src="/icons/whatsapp.png"
+                      alt="WhatsApp"
+                      width={18}
+                      height={18}
+                    />
+                  </div>
+                  <a
+                    href="https://wa.me/9477368571"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm sm:text-base text-gray-700 hover:text-[#1a4d3e] transition-colors duration-200"
+                  >
+                    Chat on WhatsApp 9477368571
+                  </a>
+                </li>
 
                 <div className="flex items-start gap-4 group">
                   <div className="p-3 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
