@@ -91,7 +91,7 @@ const Footer = () => {
                   <div className="p-2 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
                     <Phone className="w-4 h-4 text-[#1a4d3e]" />
                   </div>
-                  <span className="text-sm sm:text-base text-gray-700">94772 88571</span>
+                  <span className="text-sm sm:text-base text-gray-700">9477368571</span>
                 </li>
                 {/* <li className="flex items-center gap-3 group">
                   <div className="p-2 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
