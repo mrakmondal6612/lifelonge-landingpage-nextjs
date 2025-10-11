@@ -7,9 +7,12 @@ import { Suspense } from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Lifelong Career Consultancy",
-  description: "Your pathway to a successful healthcare career.",
-  generator: "v0.app",
+  title: "LifeLong - Healthcare Career Consultancy",
+  description: "Empowering healthcare professionals with lifelong career guidance, opportunities, and success in their journey.",
+  generator: "LifeLong",
+  icons: {
+    icon: '/icons/logo.png',
+  },
 }
 
 export default function RootLayout({
