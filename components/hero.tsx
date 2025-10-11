@@ -50,7 +50,7 @@ const Hero = () => {
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed">
                 Are you a high school graduate unsure about which direction to take in the vast 
                 field of healthcare? Whether you're considering MBBS, BDS, BHMS, BAMS, BUMS, 
-                nursing, paramedical courses, or allied health professions, we are here to help! 
+                Nursing, Paramedical courses, or allied health professions, we are here to help! 
                 Our expert consultants provide you with the guidance you need to make the right 
                 decision for your future. With personalized support at every stage of your journey, 
                 we ensure that you have the resources and knowledge to pursue a successful healthcare career.
