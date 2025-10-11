@@ -55,7 +55,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 group">
+                {/* <div className="flex items-center gap-4 group">
                   <div className="p-3 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
                     <MessageCircle className="w-5 h-5 text-[#1a4d3e]" />
                   </div>
@@ -63,7 +63,7 @@ const Contact = () => {
                     <p className="text-sm text-gray-600 mb-1">Secondary Contact</p>
                     <span className="text-gray-900 font-medium text-base sm:text-lg">7427929684</span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-start gap-4 group">
                   <div className="p-3 rounded-full bg-[#1a4d3e]/10 group-hover:bg-[#1a4d3e]/20 transition-colors">
