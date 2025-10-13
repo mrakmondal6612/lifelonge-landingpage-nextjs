@@ -3,8 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { initEmailJS, sendRegistrationEmail } from "@/lib/emailjs";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,16 +15,36 @@ const Contact = () => {
     address: ""
   });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    initEmailJS();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!agreedToTerms) {
       toast.error("Please agree to the terms and privacy policy");
       return;
     }
-    toast.success("Registration successful!");
-    setFormData({ name: "", email: "", phone: "", address: "" });
-    setAgreedToTerms(false);
+
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendRegistrationEmail(formData);
+      
+      if (result.success) {
+        toast.success("Registration successful! We'll contact you soon.");
+        setFormData({ name: "", email: "", phone: "", address: "" });
+        setAgreedToTerms(false);
+      } else {
+        toast.error("Failed to register. Please try again or contact us directly.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -172,10 +193,12 @@ const Contact = () => {
 
                 <Button 
                   type="submit" 
+                  disabled={isSubmitting}
                   className="w-full bg-[#1a4d3e] hover:bg-[#153d31] text-white font-semibold py-2.5 sm:py-3 
-                    rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-base sm:text-lg mt-4"
+                    rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-base sm:text-lg mt-4
+                    disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Register Now
+                  {isSubmitting ? "Registering..." : "Register Now"}
                 </Button>
               </form>
             </div>

@@ -3,8 +3,9 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { initEmailJS, sendFAQEmail } from "@/lib/emailjs";
 
 const FAQ = () => {
   const [formData, setFormData] = useState({
@@ -14,11 +15,30 @@ const FAQ = () => {
     subject: "",
     message: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    initEmailJS();
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you! We'll get back to you soon.");
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    setIsSubmitting(true);
+
+    try {
+      const result = await sendFAQEmail(formData);
+      
+      if (result.success) {
+        toast.success("Thank you! We'll get back to you soon.");
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      } else {
+        toast.error("Failed to send message. Please try again or contact us directly.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -120,10 +140,12 @@ const FAQ = () => {
             <div className="flex justify-end pt-4">
               <Button 
                 type="submit" 
+                disabled={isSubmitting}
                 className="bg-[#1a4d3e] hover:bg-[#153d31] text-white font-semibold px-8 py-2.5 
-                  rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-base sm:text-lg w-full sm:w-auto"
+                  rounded-full shadow-sm hover:shadow-md transition-all duration-300 text-base sm:text-lg w-full sm:w-auto
+                  disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit Query
+                {isSubmitting ? "Sending..." : "Submit Query"}
               </Button>
             </div>
           </form>
